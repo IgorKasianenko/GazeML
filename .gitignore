@@ -14,3 +14,7 @@ __pycache__/
 # Python package caches
 dist/
 *.egg-info/
+
+*.mp4
+*.mov
+test.py

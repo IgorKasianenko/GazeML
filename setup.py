@@ -16,7 +16,6 @@ setup(
             'coloredlogs',
             'h5py',
             'numpy',
-            'opencv-python',
             'pandas',
             'ujson',
 

@@ -26,8 +26,12 @@ Note that this can be done within a [virtual environment](https://docs.python.or
     mkvirtualenv -p $(which python3) myenv
     python3 setup.py install
 ```
-
 when using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/).
+
+If you are running with conda, you need to use openCV from this link
+```
+conda install -c menpo opencv
+```
 
 ### Tensorflow
 Tensorflow is assumed to be installed separately, to allow for usage of [custom wheel files](https://github.com/mind/wheels) if necessary.
