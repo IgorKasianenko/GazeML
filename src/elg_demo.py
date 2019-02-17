@@ -110,13 +110,14 @@ if __name__ == '__main__':
                     frame_index = video_out_queue.get()
                     if frame_index is None:
                         break
-                    assert frame_index in data_source._frames
+                    if not frame_index in data_source._frames:
+                        continue
                     frame = data_source._frames[frame_index]['bgr']
                     h, w, _ = frame.shape
                     if video_out is None:
                         video_out = cv.VideoWriter(
-                            args.record_video, cv.VideoWriter_fourcc(*'H264'),
-                            out_fps, (w, h),
+                            args.record_video, cv.VideoWriter_fourcc(*'mp4v'),
+                            out_fps, (w, h)
                         )
                     now_time = time.time()
                     if last_frame_time is not None:
