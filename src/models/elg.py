@@ -54,14 +54,12 @@ class ELG(BaseModel):
         data_source = next(iter(self._train_data.values()))
         data_source.set_difficulty(min((1. / 1e6) * current_step, 1.))
 
-    def build_model(self, data_sources: Dict[str, BaseDataSource], mode: str):
+    def build_model(self, eye, heatmaps, landmarks, radius, mode: str):
         """Build model."""
-        data_source = next(iter(data_sources.values()))
-        input_tensors = data_source.output_tensors
-        x = input_tensors['eye']
-        y1 = input_tensors['heatmaps'] if 'heatmaps' in input_tensors else None
-        y2 = input_tensors['landmarks'] if 'landmarks' in input_tensors else None
-        y3 = input_tensors['radius'] if 'radius' in input_tensors else None
+        x = eye
+        y1 = heatmaps
+        y2 = landmarks
+        y3 = radius
 
         with tf.variable_scope('input_data'):
             self.summary.feature_maps('eyes', x, data_format=self._data_format_longer)
